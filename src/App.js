@@ -26,11 +26,16 @@ console.log(paymaster);
     localStorage.setItem('paymaster', JSON.stringify(paymaster));
  }, [paymaster]);
 
+ function deleteEmployee (employeeID) {
+  setPaymaster(paymaster.filter(emp => {
+    return emp.employeeId !== employeeID
+  }))
+}
   return (
     <div className="container"> 
      
      <AddEmployee add={add}/>
-     <DisplayEmployee paymaster={paymaster}/>
+     <DisplayEmployee paymaster={paymaster} deleteEmployee={deleteEmployee}/>
     </div>
   );
 }

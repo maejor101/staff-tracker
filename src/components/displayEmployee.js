@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom"
+
 function DisplayEmployee (props){
 
 
-    const click = () =>{     // function for deleting data in local storage
-        
-        localStorage.removeItem('paymaster')
-        window.location.reload()   // reloads the page after delete is clicked
+     const click = (empID) =>{     // function for deleting data in local storage
+
+        props.deleteEmployee(empID)
     }
 
     return (                                //using return to display the input data on a table
@@ -44,8 +45,8 @@ function DisplayEmployee (props){
                 
             </td>
 
-            <button>Update</button>
-            <button onClick = {click}>Delete</button>
+            <button><Link to="/updateEmployee">Update</Link></button>
+            <button onClick={()=>{click(data.employeeId)}}>Delete</button>
            
            
         </div>
